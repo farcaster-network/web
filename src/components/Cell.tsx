@@ -8,6 +8,7 @@ export type CellProps = {
   title: string;
   info?: string | React.ReactNode;
   graphData?: any;
+  className?: string;
 };
 
 export enum CellOrientation {
@@ -20,12 +21,13 @@ export const Cell = ({
   displayData,
   graphData,
   title,
+  className,
 }: CellProps) => {
   return (
-    <Card className="rounded-none">
+    <Card className={cn(["rounded-none", className])}>
       <div
         className={cn(
-          "h-max flex",
+          "flex h-max",
           orientation === CellOrientation.Horizontal
             ? "flex-1 flex-row items-center"
             : "flex-col"
@@ -46,7 +48,7 @@ export const Cell = ({
             "text-4xl text-white lg:text-4xl",
             orientation === CellOrientation.Horizontal
               ? "flex-1 text-right lg:text-5xl"
-              : "pt-1 basis-1"
+              : "basis-1 pt-1"
           )}
         >
           {formatNumber(displayData)}
@@ -59,7 +61,7 @@ export const Cell = ({
             orientation === CellOrientation.Horizontal ? "" : "h-full"
           )}
         >
-          <div className="graph h-16 w-full flex rounded-b-md self-end justify-around gap-1 flex-row overflow-hidden">
+          <div className="graph flex h-16 w-full flex-row justify-around gap-1 self-end overflow-hidden rounded-b-md">
             {graphData &&
               graphData.map((data: any, index: any) => (
                 <div
