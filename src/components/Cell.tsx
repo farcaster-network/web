@@ -1,4 +1,5 @@
 import { cn, formatNumber } from "@/lib/utils";
+
 import { Card } from "./ui/card";
 
 export type CellProps = {
@@ -28,14 +29,16 @@ export const Cell = ({
           orientation === CellOrientation.Horizontal
             ? "flex-1 flex-row items-center"
             : "flex-col"
-        )}>
+        )}
+      >
         <div
           className={cn(
             "text-xl font-bold text-white",
             orientation === CellOrientation.Horizontal
               ? "flex-1 text-left"
               : "basis-1 pb-2"
-          )}>
+          )}
+        >
           {title}
         </div>
         <div
@@ -44,7 +47,8 @@ export const Cell = ({
             orientation === CellOrientation.Horizontal
               ? "flex-1 text-right lg:text-5xl"
               : "pt-1 basis-1"
-          )}>
+          )}
+        >
           {formatNumber(displayData)}
         </div>
       </div>
@@ -53,14 +57,16 @@ export const Cell = ({
           className={cn(
             "flex",
             orientation === CellOrientation.Horizontal ? "" : "h-full"
-          )}>
+          )}
+        >
           <div className="graph h-16 w-full flex rounded-b-md self-end justify-around gap-1 flex-row overflow-hidden">
             {graphData &&
               graphData.map((data: any, index: any) => (
                 <div
                   className="bar w-full self-end bg-main-purple"
                   key={index}
-                  style={{ height: `${data}%` }}></div>
+                  style={{ height: `${data}%` }}
+                ></div>
               ))}
           </div>
         </div>

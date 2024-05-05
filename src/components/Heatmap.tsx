@@ -1,6 +1,7 @@
 "use client";
 
 import { ResponsiveHeatMap } from "@nivo/heatmap";
+
 import { Card } from "./ui/card";
 
 export type HeatMapProps = {

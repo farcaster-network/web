@@ -1,4 +1,5 @@
 import { sql } from "kysely";
+
 import { db } from "../db";
 
 export async function getTotalUsers() {

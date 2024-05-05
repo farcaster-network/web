@@ -1,9 +1,10 @@
 "use client";
 
 import { LineChart as TremorLineChart } from "@tremor/react";
+import { useState } from "react";
+
 import { Card } from "./ui/card";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import { useState } from "react";
 
 const chartdata = [
   {
