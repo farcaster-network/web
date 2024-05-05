@@ -1,8 +1,9 @@
 import { sql } from "kysely";
+
 import { db } from "../db";
 
 export async function getDailyAverageLinks() {
-    const result = await sql<{ date: string, links: number }>`
+  const result = await sql<{ date: string; links: number }>`
         WITH DailyLinks AS (
             SELECT
                 DATE(links.timestamp) AS activity_date,
@@ -27,14 +28,14 @@ export async function getDailyAverageLinks() {
             date_series.date;
     `.execute(db);
 
-    const formattedData = result.rows.map(item => ({
-        date: new Date(item.date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        }),
-        count: item.links
-    }));
+  const formattedData = result.rows.map((item) => ({
+    date: new Date(item.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
+    count: item.links,
+  }));
 
-    return formattedData;
+  return formattedData;
 }
