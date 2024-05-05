@@ -3,6 +3,8 @@ import { sql } from "kysely";
 import { db } from "../db";
 
 export async function getHeatmapData() {
+  const startTime = Date.now();
+
   const result = await sql<{
     day: string;
     hour: string;
@@ -11,17 +13,22 @@ export async function getHeatmapData() {
     SELECT
       EXTRACT(ISODOW FROM timestamp) AS day,  -- ISODOW returns 1 for Monday through 7 for Sunday
       EXTRACT(HOUR FROM timestamp) AS hour,
-      CAST(COUNT(*) AS INTEGER) AS casts
+      COUNT(*) AS casts
     FROM
       casts
     WHERE
       timestamp >= NOW() - INTERVAL '1 week'
       AND deleted_at IS NULL
     GROUP BY
-      day, hour
+      EXTRACT(ISODOW FROM timestamp),
+      EXTRACT(HOUR FROM timestamp)
     ORDER BY
-      day, hour
+      day,
+      hour;
   `.execute(db);
+
+  const endTime = Date.now();
+  console.log(`getHeatmapData took ${endTime - startTime}ms`);
 
   // Transform the fetched data
   const fetchedData = result.rows;
