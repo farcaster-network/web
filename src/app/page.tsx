@@ -54,12 +54,7 @@ export default async function Home() {
         <AverageMessages />
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
-        <Heatmap title="Cast Activity" data={await getHeatmapData()} />
-        <CohortAnalysis
-          title="Retention"
-          info="This is a cohort analysis"
-          data={[]}
-        />
+        <Heatmap title="Cast Activity" data={await getHeatmapData()} />      
       </div>
     </main>
   );

@@ -35,7 +35,7 @@ export const Heatmap = ({ title, data }: HeatMapProps) => {
   };
 
   return (
-    <Card className="relative h-72 w-full col-span-2 overflow-hidden">
+    <Card className="relative h-72 w-full col-span-3k overflow-hidden">
       <div className="flex h-full flex-grow flex-col gap-4">
         <h2 className="text-lg font-semibold">{title}</h2>
         <ResponsiveHeatMap
