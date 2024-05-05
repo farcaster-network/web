@@ -32,6 +32,7 @@ export async function getDailyAverageCasts() {
       year: "numeric",
       month: "short",
       day: "numeric",
+      timeZone: "UTC",
     }),
     count: item.casts,
   }));

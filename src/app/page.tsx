@@ -6,12 +6,15 @@ import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
 import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
 import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
+import { getIndexerStats } from "@/db/data/indexerStats";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
 import { getTotalCasts } from "@/db/data/totalCasts";
 import { getTotalHubs } from "@/db/data/totalHubs";
 import { getTotalUsers } from "@/db/data/totalUsers";
 
 export default async function Home() {
+  const indexerStats = await getIndexerStats();
+
   return (
     <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-4 p-8">
       <div className="mb-4 w-full cursor-default">
@@ -68,8 +71,16 @@ export default async function Home() {
         />
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
-        <Heatmap title="Cast Activity" data={await getHeatmapData()} />
+        <Heatmap title="Cast Activity (UTC)" data={await getHeatmapData()} />
       </div>
+
+      {indexerStats && (
+        <p className="w-full text-sm text-slate-400">
+          {indexerStats.isBackfillActive
+            ? "Backfill is incomplete"
+            : `Last updated ${new Date(indexerStats.latestEventTimestamp).toLocaleString("en-US", { timeZone: "UTC" })} UTC`}
+        </p>
+      )}
     </main>
   );
 }

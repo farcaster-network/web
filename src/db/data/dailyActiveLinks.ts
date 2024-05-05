@@ -33,6 +33,7 @@ export async function getDailyAverageLinks() {
       year: "numeric",
       month: "short",
       day: "numeric",
+      timeZone: "UTC",
     }),
     count: item.links,
   }));
