@@ -82,13 +82,13 @@ export function ActiveUsers() {
           {period.charAt(0).toUpperCase() + period.slice(1)} Active Users
         </h2>
 
-        <Tabs defaultValue={period} onValueChange={handlePeriodChange}>
+        {/* <Tabs defaultValue={period} onValueChange={handlePeriodChange}>
           <TabsList>
             <TabsTrigger value="daily">Daily</TabsTrigger>
             <TabsTrigger value="weekly">Weekly</TabsTrigger>
             <TabsTrigger value="monthly">Monthly</TabsTrigger>
           </TabsList>
-        </Tabs>
+        </Tabs> */}
       </div>
       <TremorLineChart
         className="h-60"
