@@ -61,7 +61,7 @@ export default async function Home() {
           data={await getDailyAverageCasts()}
         />
         <ChartCell
-          title="Daily Average Connections"
+          title="Daily Average Links"
           data={await getDailyAverageLinks()}
         />
       </div>
