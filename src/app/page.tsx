@@ -1,14 +1,14 @@
-import { Cell, CellOrientation } from "@/components/Cell";
 import { ActiveUsers } from "@/components/ActiveUsers";
 import { AverageCasts } from "@/components/AverageCasts";
-import { Heatmap } from "@/components/Heatmap";
 import { AverageMessages } from "@/components/AverageMessages";
+import { Cell, CellOrientation } from "@/components/Cell";
 import { CohortAnalysis } from "@/components/CohortAnalysis";
-import { getTotalCasts } from "@/db/data/totalCasts";
-import { getTotalUsers } from "@/db/data/totalUsers";
-import { getTotalHubs } from "@/db/data/totalHubs";
+import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getHeatmapData } from "@/db/data/heatmap";
+import { getTotalCasts } from "@/db/data/totalCasts";
+import { getTotalHubs } from "@/db/data/totalHubs";
+import { getTotalUsers } from "@/db/data/totalUsers";
 
 export default async function Home() {
   return (
