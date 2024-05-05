@@ -6,6 +6,7 @@ import { CohortAnalysis } from "@/components/CohortAnalysis";
 import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
+import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
 import { getTotalCasts } from "@/db/data/totalCasts";
@@ -49,7 +50,7 @@ export default async function Home() {
       </div>
       <div className="grid grid-cols-3 gap-4 w-full h-full">
         <DailyActiveCasters title="Daily Active Casters" data={await getDailyActiveCasters()} />
-        <AverageCasts />
+        <AverageCasts title="Daily Average Casts" data={await getDailyAverageCasts()} />
         <AverageMessages />
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
