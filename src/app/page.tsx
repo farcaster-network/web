@@ -6,14 +6,15 @@ import { CohortAnalysis } from "@/components/CohortAnalysis";
 import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getHeatmapData } from "@/db/data/heatmap";
+import { getProtocolRevenue } from "@/db/data/protocolRevenue";
 import { getTotalCasts } from "@/db/data/totalCasts";
 import { getTotalHubs } from "@/db/data/totalHubs";
 import { getTotalUsers } from "@/db/data/totalUsers";
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center flex-wrap gap-4 p-8">
-      <div className="grid grid-cols-6 gap-4 w-full h-full">
+    <main className="flex min-h-screen flex-col flex-wrap items-center gap-4 p-8">
+      <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
         <Cell
           orientation={CellOrientation.Vertical}
           title="Total Casts"
@@ -41,16 +42,16 @@ export default async function Home() {
         />
         <Cell
           orientation={CellOrientation.Vertical}
-          title="Casts"
-          displayData={"1,000,000"}
+          title="Protocol Revenue (ETH)"
+          displayData={await getProtocolRevenue()}
         />
       </div>
-      <div className="grid grid-cols-3 gap-4 w-full h-full">
+      <div className="grid h-full w-full gap-4 md:grid-cols-3">
         <ActiveUsers />
         <AverageCasts />
         <AverageMessages />
       </div>
-      <div className="grid grid-cols-3 gap-4 w-full h-full">
+      <div className="grid h-full w-full grid-cols-3 gap-4">
         <Heatmap title="Cast Activity" data={await getHeatmapData()} />
         <CohortAnalysis
           title="Retention"
