@@ -14,10 +14,12 @@ import { getTotalUsers } from "@/db/data/totalUsers";
 export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-4 p-8">
-      <div className="mb-4 w-full">
-        <div className="cursor-default text-2xl font-bold text-white-text">
-          Dashboard
-        </div>
+      <div className="mb-4 w-full cursor-default">
+        <h1 className="mb-2 text-2xl font-bold text-white-text">Dashboard</h1>
+        <p className="max-w-xl text-sm text-slate-400">
+          This website was originally created in 2022, and revived during Farcon
+          2024. Excuse minor innacuracies as we tighten up the code.
+        </p>
       </div>
       <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-5">
         <Cell
