@@ -1,10 +1,11 @@
-import { ActiveUsers } from "@/components/ActiveUsers";
+import { DailyActiveCasters } from "@/components/ActiveUsers";
 import { AverageCasts } from "@/components/AverageCasts";
 import { AverageMessages } from "@/components/AverageMessages";
 import { Cell, CellOrientation } from "@/components/Cell";
 import { CohortAnalysis } from "@/components/CohortAnalysis";
 import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
+import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
 import { getHeatmapData } from "@/db/data/heatmap";
 import { getTotalCasts } from "@/db/data/totalCasts";
 import { getTotalHubs } from "@/db/data/totalHubs";
@@ -46,7 +47,7 @@ export default async function Home() {
         />
       </div>
       <div className="grid grid-cols-3 gap-4 w-full h-full">
-        <ActiveUsers />
+        <DailyActiveCasters title="Daily Active Casters" data={await getDailyActiveCasters()} />
         <AverageCasts />
         <AverageMessages />
       </div>
