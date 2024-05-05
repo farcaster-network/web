@@ -1,10 +1,8 @@
 "use client";
 
 import { LineChart as TremorLineChart } from "@tremor/react";
-import { useState } from "react";
 
 import { Card } from "./ui/card";
-import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 type AverageCastsProps = {
   title: string;
@@ -12,18 +10,10 @@ type AverageCastsProps = {
 };
 
 export function AverageCasts({ title, data }: AverageCastsProps) {
-  const [period, setPeriod] = useState("daily");
-
-  const handlePeriodChange = (period: string) => {
-    setPeriod(period);
-  };
-
   return (
     <Card className="flex flex-col gap-2">
-      <div className="flex justify-between w-full">
-        <h2 className="text-lg font-semibold">
-          {title}
-        </h2>
+      <div className="flex w-full justify-between">
+        <h2 className="text-lg font-semibold">{title}</h2>
       </div>
       <TremorLineChart
         className="h-60 text-xs"
@@ -31,7 +21,7 @@ export function AverageCasts({ title, data }: AverageCastsProps) {
         index="date"
         categories={["casts"]}
         colors={["indigo", "rose"]}
-        yAxisWidth={60}    
+        yAxisWidth={60}
       />
     </Card>
   );
