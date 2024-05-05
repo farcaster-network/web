@@ -51,7 +51,7 @@ export default async function Home() {
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />
       </div>
-      <div className="grid h-full w-full grid-cols-3 gap-4">
+      <div className="grid h-full w-full gap-4 lg:grid-cols-3">
         <ChartCell
           title="Daily Active Casters"
           data={await getDailyActiveCasters()}
