@@ -1,8 +1,9 @@
 import { sql } from "kysely";
+
 import { db } from "../db";
 
 export async function getDailyAverageCasts() {
-    const result = await sql<{ date: string, casts: number }>`
+  const result = await sql<{ date: string; casts: number }>`
         WITH DailyCasts AS (
             SELECT
                 DATE(casts."timestamp") AS activity_date,
@@ -26,14 +27,14 @@ export async function getDailyAverageCasts() {
             date_series.date;
     `.execute(db);
 
-    const formattedData = result.rows.map(item => ({
-        date: new Date(item.date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        }),
-        casts: item.casts  
-    }));
+  const formattedData = result.rows.map((item) => ({
+    date: new Date(item.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
+    count: item.casts,
+  }));
 
-    return formattedData;
+  return formattedData;
 }

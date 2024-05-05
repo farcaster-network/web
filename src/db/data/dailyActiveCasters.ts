@@ -1,8 +1,9 @@
 import { sql } from "kysely";
+
 import { db } from "../db";
 
 export async function getDailyActiveCasters() {
-    const result = await sql<{ date: string, users: number }>`
+  const result = await sql<{ date: string; users: number }>`
         WITH DailyActiveUsers AS (
             SELECT
                 DATE(casts."timestamp") AS activity_date,
@@ -26,14 +27,16 @@ export async function getDailyActiveCasters() {
             date_series.date;
     `.execute(db);
 
-    const formattedData = result.rows.map(item => ({
-        date: new Date(item.date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        }),
-        users: item.users
-    }));
+  const formattedData = result.rows.map((item) => ({
+    date: new Date(item.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
+    count: item.users,
+  }));
 
-    return formattedData;
+  console.log(formattedData);
+
+  return formattedData;
 }

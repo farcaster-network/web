@@ -4,12 +4,15 @@ import { LineChart as TremorLineChart } from "@tremor/react";
 
 import { Card } from "./ui/card";
 
-type AverageCastsProps = {
+type Props = {
   title: string;
-  data: any[];
+  data: {
+    date: string;
+    count: number;
+  }[];
 };
 
-export function AverageCasts({ title, data }: AverageCastsProps) {
+export function ChartCell({ title, data }: Props) {
   return (
     <Card className="flex flex-col gap-2">
       <div className="flex w-full justify-between">
@@ -19,7 +22,7 @@ export function AverageCasts({ title, data }: AverageCastsProps) {
         className="h-60 text-xs"
         data={data}
         index="date"
-        categories={["casts"]}
+        categories={["count"]}
         colors={["indigo", "rose"]}
         yAxisWidth={60}
       />

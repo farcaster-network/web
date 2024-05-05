@@ -1,11 +1,9 @@
-import { DailyActiveCasters } from "@/components/ActiveUsers";
-import { AverageCasts } from "@/components/AverageCasts";
-import { AverageMessages } from "@/components/AverageMessages";
 import { Cell, CellOrientation } from "@/components/Cell";
-import { CohortAnalysis } from "@/components/CohortAnalysis";
+import { ChartCell } from "@/components/ChartCell";
 import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
+// import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
 import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
@@ -48,13 +46,22 @@ export default async function Home() {
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />
       </div>
-      <div className="grid grid-cols-3 gap-4 w-full h-full">
-        <DailyActiveCasters title="Daily Active Casters" data={await getDailyActiveCasters()} />
-        <AverageCasts title="Daily Average Casts" data={await getDailyAverageCasts()} />
-        <AverageMessages />
+      <div className="grid h-full w-full grid-cols-3 gap-4">
+        <ChartCell
+          title="Daily Active Casters"
+          data={await getDailyActiveCasters()}
+        />
+        <ChartCell
+          title="Daily Average Casts"
+          data={await getDailyAverageCasts()}
+        />
+        {/* <ChartCell
+          title="Daily Average Connections"
+          data={await getDailyAverageLinks()}
+        /> */}
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
-        <Heatmap title="Cast Activity" data={await getHeatmapData()} />      
+        <Heatmap title="Cast Activity" data={await getHeatmapData()} />
       </div>
     </main>
   );
