@@ -3,7 +3,7 @@ import { ChartCell } from "@/components/ChartCell";
 import { Heatmap } from "@/components/Heatmap";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
-// import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
+import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
 import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
@@ -60,10 +60,10 @@ export default async function Home() {
           title="Daily Average Casts"
           data={await getDailyAverageCasts()}
         />
-        {/* <ChartCell
+        <ChartCell
           title="Daily Average Connections"
           data={await getDailyAverageLinks()}
-        /> */}
+        />
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
         <Heatmap title="Cast Activity" data={await getHeatmapData()} />
