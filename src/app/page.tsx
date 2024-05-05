@@ -13,7 +13,7 @@ import { getTotalUsers } from "@/db/data/totalUsers";
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col flex-wrap items-center gap-4 p-8">
+    <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-4 p-8">
       <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-5">
         <Cell
           orientation={CellOrientation.Vertical}
@@ -46,12 +46,12 @@ export default async function Home() {
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />
       </div>
-      <div className="grid h-full w-full gap-4 md:grid-cols-3">
+      <div className="grid h-full w-full gap-4 lg:grid-cols-3">
         <ActiveUsers />
         <AverageCasts />
         <AverageMessages />
       </div>
-      <div className="grid h-full w-full grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
         <Heatmap title="Cast Activity" data={await getHeatmapData()} />
         <CohortAnalysis
           title="Retention"
