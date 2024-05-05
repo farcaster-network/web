@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PlausibleProvider from "next-plausible";
 import { JetBrains_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -23,6 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-slate-950">
+      <head>
+        <PlausibleProvider domain="farcaster.network" trackOutboundLinks />
+      </head>
+
       <body className={mono.className}>
         <ThemeProvider
           attribute="class"
