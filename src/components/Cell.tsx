@@ -35,7 +35,7 @@ export const Cell = ({
       >
         <div
           className={cn(
-            "text-xl font-bold text-white",
+            "font-bold leading-5 text-white md:text-xl",
             orientation === CellOrientation.Horizontal
               ? "flex-1 text-left"
               : "basis-1 pb-2"
@@ -45,7 +45,7 @@ export const Cell = ({
         </div>
         <div
           className={cn(
-            "text-4xl text-white lg:text-4xl",
+            "text-2xl text-white md:text-4xl lg:text-4xl",
             orientation === CellOrientation.Horizontal
               ? "flex-1 text-right lg:text-5xl"
               : "basis-1 pt-1"
@@ -68,7 +68,7 @@ export const Cell = ({
                   className="bar w-full self-end bg-main-purple"
                   key={index}
                   style={{ height: `${data}%` }}
-                ></div>
+                />
               ))}
           </div>
         </div>
