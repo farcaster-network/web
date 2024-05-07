@@ -27,7 +27,7 @@ export const Cell = ({
     <Card className={cn(["rounded-none", className])}>
       <div
         className={cn(
-          "flex h-max",
+          "flex",
           orientation === CellOrientation.Horizontal
             ? "flex-1 flex-row items-center"
             : "flex-col"

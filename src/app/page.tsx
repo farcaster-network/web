@@ -24,7 +24,7 @@ export default async function Home() {
           2024. Excuse minor innacuracies as we tighten up the code.
         </p>
       </div>
-      <div className="grid h-full w-full grid-cols-2 gap-2 md:grid-cols-6 md:gap-4 xl:grid-cols-5">
+      <div className="grid w-full grid-cols-2 gap-2 md:grid-cols-6 md:gap-4 xl:grid-cols-5">
         <Cell
           orientation={CellOrientation.Vertical}
           title="Total Casts"
