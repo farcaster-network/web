@@ -1,11 +1,14 @@
 import { Cell, CellOrientation } from "@/components/Cell";
 import { ChartCell } from "@/components/ChartCell";
+import { CohortAnalysis } from "@/components/CohortAnalysis";
 import { Heatmap } from "@/components/Heatmap";
+import { getCohortAnalysis } from "@/db/data/cohortAnalysis";
 import { getConnectedAddresses } from "@/db/data/connectedAddresses";
 import { getDailyActiveCasters } from "@/db/data/dailyActiveCasters";
 import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
 import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
+import { getNetworkSize } from "@/db/data/networkSize";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
 import { getTotalCasts } from "@/db/data/totalCasts";
 import { getTotalHubs } from "@/db/data/totalHubs";
@@ -21,7 +24,7 @@ export default async function Home() {
           2024. Excuse minor innacuracies as we tighten up the code.
         </p>
       </div>
-      <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-5">
+      <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-6">
         <Cell
           orientation={CellOrientation.Vertical}
           title="Total Casts"
@@ -48,7 +51,13 @@ export default async function Home() {
         />
         <Cell
           orientation={CellOrientation.Vertical}
-          title="Protocol Revenue (ETH)"
+          title="Network Size"
+          displayData={await getNetworkSize()}
+          className="md:col-span-3 xl:col-span-1"
+        />
+        <Cell
+          orientation={CellOrientation.Vertical}
+          title="Protocol Revenue"
           displayData={await getProtocolRevenue()}
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />
@@ -69,6 +78,10 @@ export default async function Home() {
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
         <Heatmap title="Cast Activity" data={await getHeatmapData()} />
+        <CohortAnalysis
+          title="Cohort Analysis"
+          data={await getCohortAnalysis()}
+        />
       </div>
     </main>
   );
