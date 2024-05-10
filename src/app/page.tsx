@@ -17,7 +17,7 @@ export default async function Home() {
   const indexerStats = await getIndexerStats();
 
   return (
-    <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-4 p-8">
+    <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-2 p-4 md:gap-4 md:p-8">
       <div className="mb-4 w-full cursor-default">
         <h1 className="mb-2 text-2xl font-bold text-white-text">Dashboard</h1>
         <p className="max-w-xl text-sm text-slate-400">
@@ -63,7 +63,7 @@ export default async function Home() {
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />
       </div>
-      <div className="grid h-full w-full gap-4 lg:grid-cols-3">
+      <div className="grid h-full w-full gap-2 md:gap-4 lg:grid-cols-3">
         <ChartCell
           title="Daily Active Casters"
           data={await getDailyActiveCasters()}
@@ -77,7 +77,7 @@ export default async function Home() {
           data={await getDailyAverageLinks()}
         />
       </div>
-      <div className="grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-3">
+      <div className="grid h-full w-full grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3">
         <Heatmap title="Cast Activity (UTC)" data={await getHeatmapData()} />
       </div>
 
