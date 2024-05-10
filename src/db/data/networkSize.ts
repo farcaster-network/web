@@ -16,9 +16,7 @@ type HubInfo = {
 };
 
 export async function getNetworkSize() {
-  const response = await fetch(
-    "http://ec2-54-151-9-236.us-west-1.compute.amazonaws.com:2281/v1/info?dbstats=1"
-  );
+  const response = await fetch(process.env.HUB_URL + "/v1/info?dbstats=1");
 
   const data = (await response.json()) as HubInfo;
 

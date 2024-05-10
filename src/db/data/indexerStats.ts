@@ -1,7 +1,8 @@
 export async function getIndexerStats() {
   let serverUrl;
+
   try {
-    serverUrl = new URL(process.env.INDEXER_URL || "");
+    serverUrl = new URL(process.env.SERVER_URL + ":3001" || "");
   } catch (error) {
     console.error("Invalid URL:", error);
     return undefined;
