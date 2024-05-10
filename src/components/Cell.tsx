@@ -51,7 +51,7 @@ export const Cell = ({
               : "basis-1 pt-1"
           )}
         >
-          {formatNumber(displayData)}
+          {displayData}
         </div>
       </div>
       {graphData !== undefined && (
