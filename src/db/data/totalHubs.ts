@@ -1,5 +1,7 @@
 import { sql } from "kysely";
 
+import { formatNumber } from "@/lib/utils";
+
 import { db } from "../db";
 
 export async function getTotalHubs() {
@@ -13,5 +15,5 @@ export async function getTotalHubs() {
   const endTime = Date.now();
   console.log(`getTotalHubs took ${endTime - startTime}ms`);
 
-  return result.rows.length > 0 ? result.rows[0].hubs : "0";
+  return result.rows.length > 0 ? formatNumber(result.rows[0].hubs) : "0";
 }

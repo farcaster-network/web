@@ -7,6 +7,7 @@ import { getDailyAverageLinks } from "@/db/data/dailyActiveLinks";
 import { getDailyAverageCasts } from "@/db/data/dailyAverageCasts";
 import { getHeatmapData } from "@/db/data/heatmap";
 import { getIndexerStats } from "@/db/data/indexerStats";
+import { getNetworkSize } from "@/db/data/networkSize";
 import { getProtocolRevenue } from "@/db/data/protocolRevenue";
 import { getTotalCasts } from "@/db/data/totalCasts";
 import { getTotalHubs } from "@/db/data/totalHubs";
@@ -24,7 +25,7 @@ export default async function Home() {
           2024. Excuse minor innacuracies as we tighten up the code.
         </p>
       </div>
-      <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-5">
+      <div className="grid h-full w-full grid-cols-2 gap-4 md:grid-cols-6 xl:grid-cols-6">
         <Cell
           orientation={CellOrientation.Vertical}
           title="Total Casts"
@@ -51,7 +52,13 @@ export default async function Home() {
         />
         <Cell
           orientation={CellOrientation.Vertical}
-          title="Protocol Revenue (ETH)"
+          title="Network Size"
+          displayData={await getNetworkSize()}
+          className="md:col-span-3 xl:col-span-1"
+        />
+        <Cell
+          orientation={CellOrientation.Vertical}
+          title="Protocol Revenue"
           displayData={await getProtocolRevenue()}
           className="col-span-2 md:col-span-3 xl:col-span-1"
         />

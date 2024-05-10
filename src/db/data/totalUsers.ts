@@ -1,5 +1,7 @@
 import { sql } from "kysely";
 
+import { formatNumber } from "@/lib/utils";
+
 import { db } from "../db";
 
 export async function getTotalUsers() {
@@ -13,5 +15,5 @@ export async function getTotalUsers() {
   const endTime = Date.now();
   console.log(`getTotalUsers took ${endTime - startTime}ms`);
 
-  return result.rows.length > 0 ? result.rows[0].users : "0";
+  return result.rows.length > 0 ? formatNumber(result.rows[0].users) : "0";
 }
