@@ -16,7 +16,8 @@ type HubInfo = {
 };
 
 export async function getNetworkSize() {
-  const response = await fetch(process.env.HUB_URL + "/v1/info?dbstats=1");
+  const hubUrl = new URL(process.env.SERVER_URL + ":2281/v1/info?dbstats=1");
+  const response = await fetch(hubUrl);
 
   const data = (await response.json()) as HubInfo;
 
