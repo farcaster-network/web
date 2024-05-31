@@ -1,5 +1,3 @@
-import { sql } from "kysely";
-
 import { formatNumber } from "@/lib/utils";
 
 import { db } from "../db";
@@ -7,13 +5,13 @@ import { db } from "../db";
 export async function getTotalHubs() {
   const startTime = Date.now();
 
-  const result = await sql<{ hubs: string }>`
-      SELECT CAST(COUNT(*) AS VARCHAR) AS hubs
-      FROM hubs
-    `.execute(db);
+  const result = await db
+    .selectFrom("hubs")
+    .select(({ fn }) => fn.countAll().as("count"))
+    .executeTakeFirst();
 
   const endTime = Date.now();
   console.log(`getTotalHubs took ${endTime - startTime}ms`);
 
-  return result.rows.length > 0 ? formatNumber(result.rows[0].hubs) : "0";
+  return result ? formatNumber(result.count.toString()) : "n/a";
 }

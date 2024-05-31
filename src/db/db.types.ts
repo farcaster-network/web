@@ -107,7 +107,7 @@ type EventRow = {
   id: number;
 };
 
-// Hubs ------------------------------------------------------------------------------------------
+// HUBS --------------------------------------------------------------------------------------------
 type HubRow = {
   id: number;
   gossipAddress: string;
@@ -120,6 +120,15 @@ type HubRow = {
   timestamp: number;
 };
 
+// USERS VIEW --------------------------------------------------------------------------------------
+type UserRow = {
+  fid: Fid;
+  pfp: string;
+  display: string;
+  bio: string;
+  username: string;
+};
+
 // ALL TABLES --------------------------------------------------------------------------------------
 export interface Tables {
   casts: CastRow;
@@ -129,4 +138,7 @@ export interface Tables {
   userData: UserDataRow;
   events: EventRow;
   hubs: HubRow;
+
+  // Views
+  users: UserRow;
 }

@@ -6,6 +6,7 @@ import { Card } from "./ui/card";
 
 export type HeatMapProps = {
   title: string;
+  description?: string;
   info?: string | React.ReactNode;
   data: {
     data: {
@@ -20,7 +21,7 @@ export type HeatMapProps = {
   };
 };
 
-export const Heatmap = ({ title, data }: HeatMapProps) => {
+export const Heatmap = ({ title, description, data }: HeatMapProps) => {
   if (!data || data.data.length === 0) return null;
 
   const theme = {
@@ -35,9 +36,13 @@ export const Heatmap = ({ title, data }: HeatMapProps) => {
   };
 
   return (
-    <Card className="relative h-72 w-full col-span-3 overflow-hidden">
+    <Card className="relative col-span-3 h-72 w-full overflow-hidden">
       <div className="flex h-full flex-grow flex-col gap-4">
         <h2 className="text-lg font-semibold">{title}</h2>
+        {description && (
+          <p className="-mt-2 text-sm text-slate-400">{description}</p>
+        )}
+
         <ResponsiveHeatMap
           data={data.data}
           theme={theme}

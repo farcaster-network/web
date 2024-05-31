@@ -24,7 +24,7 @@ export async function getNetworkSize() {
   const approxSize = data.dbStats.approxSize;
 
   if (!approxSize) {
-    return "0";
+    return "n/a";
   }
 
   const approxSizeFormatted = formatBytes(approxSize);

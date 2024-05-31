@@ -78,7 +78,11 @@ export default async function Home() {
         />
       </div>
       <div className="grid w-full grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3">
-        <Heatmap title="Cast Activity (UTC)" data={await getHeatmapData()} />
+        <Heatmap
+          title="Cast Activity (UTC)"
+          description="The streak of white boxes indicates the time between the start and end of our data collection."
+          data={await getHeatmapData()}
+        />
       </div>
 
       {indexerStats && (
