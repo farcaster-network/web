@@ -20,10 +20,6 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col flex-wrap items-center justify-center gap-2 p-4 md:gap-4 md:p-8">
       <div className="mb-4 w-full cursor-default">
         <h1 className="mb-2 text-2xl font-bold text-white-text">Dashboard</h1>
-        <p className="max-w-xl text-sm text-slate-400">
-          This website was originally created in 2022, and revived during Farcon
-          2024. Excuse minor innacuracies as we tighten up the code.
-        </p>
       </div>
       <div className="grid w-full grid-cols-2 gap-2 md:grid-cols-6 md:gap-4 xl:grid-cols-6">
         <Cell
